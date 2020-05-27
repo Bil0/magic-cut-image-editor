@@ -2,5 +2,163 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "image-editor": {
+      "projectType": "library",
+      "root": "projects/image-editor",
+      "sourceRoot": "projects/image-editor/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/image-editor/tsconfig.lib.json",
+            "project": "projects/image-editor/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/image-editor/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/image-editor/src/test.ts",
+            "tsConfig": "projects/image-editor/tsconfig.spec.json",
+            "karmaConfig": "projects/image-editor/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/image-editor/tsconfig.lib.json",
+              "projects/image-editor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "image-editor-demo": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/image-editor-demo",
+      "sourceRoot": "projects/image-editor-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/image-editor-demo",
+            "index": "projects/image-editor-demo/src/index.html",
+            "main": "projects/image-editor-demo/src/main.ts",
+            "polyfills": "projects/image-editor-demo/src/polyfills.ts",
+            "tsConfig": "projects/image-editor-demo/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/image-editor-demo/src/favicon.ico",
+              "projects/image-editor-demo/src/assets"
+            ],
+            "styles": [
+              "projects/image-editor-demo/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/image-editor-demo/src/environments/environment.ts",
+                  "with": "projects/image-editor-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "image-editor-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "image-editor-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "image-editor-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/image-editor-demo/src/test.ts",
+            "polyfills": "projects/image-editor-demo/src/polyfills.ts",
+            "tsConfig": "projects/image-editor-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/image-editor-demo/karma.conf.js",
+            "assets": [
+              "projects/image-editor-demo/src/favicon.ico",
+              "projects/image-editor-demo/src/assets"
+            ],
+            "styles": [
+              "projects/image-editor-demo/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/image-editor-demo/tsconfig.app.json",
+              "projects/image-editor-demo/tsconfig.spec.json",
+              "projects/image-editor-demo/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/image-editor-demo/e2e/protractor.conf.js",
+            "devServerTarget": "image-editor-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "image-editor-demo:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "image-editor"
 }
