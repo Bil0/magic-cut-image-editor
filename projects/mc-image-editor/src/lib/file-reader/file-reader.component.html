@@ -1,0 +1,10 @@
+<div *ngIf="dropzone" (drop)="filesAppend($event.dataTransfer.files)">
+	<ng-content></ng-content>
+</div>
+<input
+	*ngIf="!dropzone"
+	type="file"
+	[multiple]="multiple"
+	[accept]="accept"
+	(change)="readFiles($event.target.files)"
+/>

@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "image-editor": {
+    "mc-image-editor": {
       "projectType": "library",
-      "root": "projects/image-editor",
-      "sourceRoot": "projects/image-editor/src",
+      "root": "projects/mc-image-editor",
+      "sourceRoot": "projects/mc-image-editor/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/image-editor/tsconfig.lib.json",
-            "project": "projects/image-editor/ng-package.json"
+            "tsConfig": "projects/mc-image-editor/tsconfig.lib.json",
+            "project": "projects/mc-image-editor/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/image-editor/tsconfig.lib.prod.json"
+              "tsConfig": "projects/mc-image-editor/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/image-editor/src/test.ts",
-            "tsConfig": "projects/image-editor/tsconfig.spec.json",
-            "karmaConfig": "projects/image-editor/karma.conf.js"
+            "main": "projects/mc-image-editor/src/test.ts",
+            "tsConfig": "projects/mc-image-editor/tsconfig.spec.json",
+            "karmaConfig": "projects/mc-image-editor/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/image-editor/tsconfig.lib.json",
-              "projects/image-editor/tsconfig.spec.json"
+              "projects/mc-image-editor/tsconfig.lib.json",
+              "projects/mc-image-editor/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

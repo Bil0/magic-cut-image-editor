@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageEditorComponent } from './image-editor.component';
+import { FileReaderDemoComponent } from './file-reader-demo.component';
 
-describe('ImageEditorComponent', () => {
-  let component: ImageEditorComponent;
-  let fixture: ComponentFixture<ImageEditorComponent>;
+describe('FileReaderDemoComponent', () => {
+  let component: FileReaderDemoComponent;
+  let fixture: ComponentFixture<FileReaderDemoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageEditorComponent ]
+      declarations: [ FileReaderDemoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageEditorComponent);
+    fixture = TestBed.createComponent(FileReaderDemoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
