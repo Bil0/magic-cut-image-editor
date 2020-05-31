@@ -1,0 +1,13 @@
+.image-cropper {
+	width: 400px;
+	height: 400px;
+	top: 12px;
+	left: -1px;
+    border: 5px solid #e5e5da;
+    text-align: center;
+}
+
+.image-cropper img {
+	min-width: 100%;
+	max-width: none;
+}

@@ -1,3 +1,19 @@
-<div>
-  <file-reader-demo></file-reader-demo>
-</div>
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>
+			Cropper demo
+		</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<file-reader (fileAppend)="readImage($event)"></file-reader>
+		<cropper-demo
+			*ngIf="file"
+			[file]="file"
+			[cropWidth]="150"
+			[cropHeight]="150"
+		></cropper-demo>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-button [disabled]="!file" (click)="file = undefined">Clear</button>
+	</mat-card-actions>
+</mat-card>

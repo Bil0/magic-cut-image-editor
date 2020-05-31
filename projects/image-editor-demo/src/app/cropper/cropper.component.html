@@ -1,0 +1,26 @@
+<div>
+    <image-cropper
+        class="image-cropper"
+        #cropper
+        [src]="file"
+        [cropWidth]="cropWidth"
+        [cropHeight]="cropHeight"
+        [zoom]="1"
+        [left]="-200"
+        [top]="-200"
+        (change)="updateImageConfig($event)"
+    ></image-cropper>
+    <mat-slider
+        value="1"
+        min="1"
+        max="4"
+        step="0.1"
+        (change)="cropper.setZoom($event.value)"
+    >
+    </mat-slider>
+
+    <button (click)="setUrl()">Croopaa!!</button>
+</div>
+<div class="image-cropper" *ngIf="url">
+    <img [src]="url"/>
+</div>

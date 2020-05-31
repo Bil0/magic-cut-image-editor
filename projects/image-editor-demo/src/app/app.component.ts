@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'image-editor-demo';
+  file: File;
+
+
+  readImage(files: Array<File>) {
+    this.file = files[0];
+  }
 }
