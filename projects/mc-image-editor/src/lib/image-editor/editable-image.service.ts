@@ -14,13 +14,13 @@ export class EditableImageService {
 
 	constructor(data: Blob|File, protected editor: { [feature: string]: ImageEditorFeature }) {
 		this.canvas = document.createElement('canvas');
-		this.context = <CanvasRenderingContext2D>this.canvas.getContext("2d");
+		this.context = (this.canvas.getContext('2d') as CanvasRenderingContext2D);
 
 		const reader = new FileReader();
-		if(data instanceof File) { this.name = data.name; }
+		if (data instanceof File) { this.name = data.name; }
 
 		fromEvent(reader, 'load')
-			.subscribe((e: Event) => this.image.src = (<FileReader>e.target).result as string);
+			.subscribe((e: Event) => this.image.src = (e.target as FileReader).result as string);
 
 		fromEvent(this.image, 'load')
 			.subscribe((e: Event) => this.imageLoaded.next(e));
@@ -42,7 +42,7 @@ export class EditableImageService {
 	applyCustom(fn: CustomImageEditorFeature) {
 		this.ready.subscribe(() => {
             fn(this.context, this.image);
-        })
+        });
 		return this;
 	}
 
@@ -53,24 +53,25 @@ export class EditableImageService {
 
 	getBlob(type: string = 'image/png', quality: number = 0.92): Blob {
 		const base64 = this.canvas.toDataURL(type, quality);
-		const binStr = atob(base64.split(',')[1]), len = binStr.length;
-		let arr = new Uint8Array(len);
+		const binStr = atob(base64.split(',')[1]);
+		const len = binStr.length;
+		const arr = new Uint8Array(len);
 
-		for(let i = 0; i < len; i++) {
+		for (let i = 0; i < len; i++) {
             arr[i] = binStr.charCodeAt(i);
         }
 
 		this.blob = new Blob([arr], { type });
-		(<any>this.blob).hasDataURL = true;
-		(<any>this.blob).toJSON = function() {
+		(this.blob as any).hasDataURL = true;
+		(this.blob as any).toJSON = function() {
 			return {
 				name: this.name,
 				size: this.size,
 				type: this.type,
 				dataURL: base64
 			};
-		}
-		this.blob.toString = (<any>this.blob).toJSON;
+		};
+		this.blob.toString = (this.blob as any).toJSON;
 		return this.blob;
 	}
 }

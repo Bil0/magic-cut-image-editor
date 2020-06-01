@@ -1,4 +1,4 @@
-<div *ngIf="dropzone" (drop)="filesAppend($event.dataTransfer.files)">
+<div *ngIf="dropzone" (drop)="onFilesAppend($event.dataTransfer.files)">
 	<ng-content></ng-content>
 </div>
 <input

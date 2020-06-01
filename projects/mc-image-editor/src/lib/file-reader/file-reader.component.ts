@@ -10,7 +10,7 @@ import {
 import { FileRepositoryService } from '../file-repository/file-repository.service';
 
 @Component({
-	selector: 'file-reader',
+	selector: 'mc-file-reader',
 	templateUrl: './file-reader.component.html',
 	styleUrls: ['./file-reader.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush
@@ -19,19 +19,20 @@ export class FileReaderComponent {
 	private _dropzone: boolean;
 	private _multiple: boolean;
 
-	@Output('fileAppend') onFileAppend = new EventEmitter();
+	@Output() fileAppend = new EventEmitter();
 
-	@Input() accept: string = '*';
-	@Input() scope: string = '';
+	@Input() accept = '*';
+	@Input() scope = '';
 
-	@Input() set multiple(value: boolean) { this._multiple = typeof value !== 'undefined'; };
+	@Input() set multiple(value: boolean) { this._multiple = typeof value !== 'undefined'; }
+	get multiple(): boolean { return this._multiple; }
+
 	@Input() set dropzone(value: boolean) {
 		this._dropzone = typeof value !== 'undefined';
 		if (!this._dropzone) { this._multiple = true; }
-	};
+	}
+	get dropzone(): boolean { return this._dropzone; }
 
-	get multiple(): boolean { return this._multiple; };
-	get dropzone(): boolean { return this._dropzone; };
 
 	@HostListener('dragover', ['$event']) onDragOver($event: any) {
 		$event.stopPropagation();
@@ -49,18 +50,18 @@ export class FileReaderComponent {
 	readFiles(files: Array<File>) {
 		const changed: Array<File> = [ ...files ].map(f => {
 			if (f.type.match(this.accept.replace('*', '.*'))) {
-				this.fileRepositoryService.scope(this.scope).push(f)
+				this.fileRepositoryService.scope(this.scope).push(f);
 
 				return f;
 			}
 		});
 
-		this.onFileAppend.emit(changed);
+		this.fileAppend.emit(changed);
 
 		return changed;
 	}
 
-	filesAppend(files: Array<File>) {
-		this.onFileAppend.emit(this.readFiles(files));
+	onFilesAppend(files: Array<File>) {
+		this.fileAppend.emit(this.readFiles(files));
 	}
 }

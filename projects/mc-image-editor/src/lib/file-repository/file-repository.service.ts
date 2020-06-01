@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 	providedIn: 'root'
 })
 export class FileRepositoryService {
-	private scopes: { [scope: string]: Array<File> } = {}
+	private scopes: { [scope: string]: Array<File> } = {};
 
 	scope(scope: string) {
-		if(!this.scopes[scope]) {
+		if (!this.scopes[scope]) {
 			this.scopes[scope] = [];
 		}
 

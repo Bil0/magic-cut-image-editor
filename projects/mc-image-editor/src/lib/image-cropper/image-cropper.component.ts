@@ -14,7 +14,7 @@ import { ImageEditorService } from '../image-editor/image-editor.service';
 import { EditableImageService } from '../image-editor/editable-image.service';
 
 @Component({
-	selector: 'image-cropper',
+	selector: 'mc-image-cropper',
 	templateUrl: './image-cropper.component.html',
 	styleUrls: ['./image-cropper.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush
@@ -32,8 +32,8 @@ export class ImageCropperComponent {
 	zoomConfig = { value: 1, max: 4 };
 	img: Blob;
 
-	@Output('change') onChange = new EventEmitter();
-	@Input('src') set image(value: Blob) { this.initImageCrop(value); };
+	@Output() configChange = new EventEmitter();
+	@Input('src') set image(value: Blob) { this.initImageCrop(value); }
 
 	@Input() cropWidth: number;
 	@Input() cropHeight: number;
@@ -43,27 +43,27 @@ export class ImageCropperComponent {
 			this.setZoom(value);
 		});
 	}
-	get zoom() { return this.zoomConfig.value }
+	get zoom() { return this.zoomConfig.value; }
 
 	@Input() set top(value: any) {
 		this.editable.ready.subscribe(() => {
 			this.imagePosition.y = 0;
 			this.moveDelta = { y: 0, x: this.imagePosition.x};
-			this.move({ clientY: parseInt(value, 10), clientX: this.imagePosition.x } as MouseEvent)
+			this.move({ clientY: parseInt(value, 10), clientX: this.imagePosition.x } as MouseEvent);
 			delete this.moveDelta;
 		});
-	};
-	get top() { return this.imagePosition.y };
+	}
+	get top() { return this.imagePosition.y; }
 
 	@Input() set left(value: any) {
 		this.editable.ready.subscribe(() => {
 			this.imagePosition.x = 0;
 			this.moveDelta = { x: 0, y: this.imagePosition.y};
-			this.move({ clientX: parseInt(value, 10), clientY: this.imagePosition.y } as MouseEvent)
+			this.move({ clientX: parseInt(value, 10), clientY: this.imagePosition.y } as MouseEvent);
 			delete this.moveDelta;
 		});
-	};
-	get left() { return this.imagePosition.x };
+	}
+	get left() { return this.imagePosition.x; }
 
 	@Input() set maxZoom(value: any) { this.zoomConfig.max = parseFloat(value); }
 	get maxZoom() { return this.zoomConfig.max; }
@@ -76,8 +76,7 @@ export class ImageCropperComponent {
 		return false;
 	}
 
-	constructor(private editor: ImageEditorService, private el: ElementRef) {
-	}
+	constructor(private editor: ImageEditorService, private el: ElementRef) { }
 
 	initImageCrop(image: Blob) {
 		this.editable = this.editor.edit(image);
@@ -86,7 +85,7 @@ export class ImageCropperComponent {
 			const fittingDimensions = this.fitArea(
 				{ width: this.cropWidth, height: this.cropHeight },
 				{ width: previewDimensions.width, height: previewDimensions.height }
-			)
+			);
 
 			const { vborder, hborder } = this.addTransparentBorder(previewDimensions, fittingDimensions);
 			this.borders = { vborder, hborder };
@@ -124,7 +123,7 @@ export class ImageCropperComponent {
 	}
 
 	public move(e: MouseEvent) {
-		if(!this.moveDelta) { this.moveDelta = { x: e.clientX, y: e.clientY }; }
+		if (!this.moveDelta) { this.moveDelta = { x: e.clientX, y: e.clientY }; }
 
 		this.imagePosition.x += e.clientX - this.moveDelta.x;
 		this.imagePosition.y += e.clientY - this.moveDelta.y;
@@ -145,15 +144,15 @@ export class ImageCropperComponent {
 
 	setZoom(value: string) {
 		let parsedValue = parseFloat(value);
-		if(parsedValue <= 0) { parsedValue = 1; }
-		if(parsedValue > this.zoomConfig.max) { parsedValue = this.zoomConfig.max; }
+		if (parsedValue <= 0) { parsedValue = 1; }
+		if (parsedValue > this.zoomConfig.max) { parsedValue = this.zoomConfig.max; }
 
 		this.zoomConfig.value = parsedValue;
 
 		const newDimensions = {
 			width: this.originalImageDimensions.width * this.zoomConfig.value,
 			height: this.originalImageDimensions.height * this.zoomConfig.value,
-		}
+		};
 
 		const hdiff = newDimensions.width - this.imageDimensions.width;
 		const vdiff = newDimensions.height - this.imageDimensions.height;
@@ -183,8 +182,8 @@ export class ImageCropperComponent {
 		finishTransition = () => {
 			img.className = '';
 			img.removeEventListener('transitionend', finishTransition);
-			this.onChange.emit({ left: this.imagePosition.x, top: this.imagePosition.y, zoom: this.zoom });
-		}
+			this.configChange.emit({ left: this.imagePosition.x, top: this.imagePosition.y, zoom: this.zoom });
+		};
 
 		img.addEventListener('transitionend', finishTransition);
 	}
@@ -215,8 +214,8 @@ export class ImageCropperComponent {
 		const hdiff = this.cropDimensions.width - this.imageDimensions.width;
 		const vdiff = this.cropDimensions.height - this.imageDimensions.height;
 
-		if(pos.x < this.borders.hborder) {
-			if(pos.x < this.borders.hborder + hdiff) {
+		if (pos.x < this.borders.hborder) {
+			if (pos.x < this.borders.hborder + hdiff) {
 				corrected.x = this.borders.hborder + hdiff;
 			}
 			else {
@@ -227,8 +226,8 @@ export class ImageCropperComponent {
 			corrected.x = this.borders.hborder;
 		}
 
-		if(pos.y < this.borders.vborder) {
-			if(pos.y < this.borders.vborder + vdiff) {
+		if (pos.y < this.borders.vborder) {
+			if (pos.y < this.borders.vborder + vdiff) {
 				corrected.y = this.borders.vborder + vdiff;
 			}
 			else {
@@ -248,18 +247,20 @@ export class ImageCropperComponent {
 		window.removeEventListener('mousemove', this.eventListeners.mousemove);
 		window.removeEventListener('mouseup', this.eventListeners.mouseup);
 
-		this.onChange.emit({ left: this.imagePosition.x, top: this.imagePosition.y, zoom: this.zoom });
+		this.configChange.emit({ left: this.imagePosition.x, top: this.imagePosition.y, zoom: this.zoom });
 		return false;
 	}
 
 	protected fitArea(object: Dimension, area: Dimension) {
-		const ph = object.height / area.height, pw = object.width / area.width;
+		const ph = object.height / area.height;
+		const pw = object.width / area.width;
 		const scale = ph > pw ? ph : pw;
 		return { width: object.width / scale, height: object.height / scale };
 	}
 
 	protected fillArea(object: Dimension, area: Dimension) {
-		const ph = object.height / area.height, pw = object.width / area.width;
+		const ph = object.height / area.height;
+		const pw = object.width / area.width;
 		const scale = ph > pw ? pw : ph;
 		return { width: object.width / scale, height: object.height / scale };
 	}
@@ -271,9 +272,9 @@ export class ImageCropperComponent {
 		const borderElement = _(this.el.nativeElement.childNodes)
 			.find((c: HTMLElement) => !!c.className && c.className.indexOf('border') >= 0);
 
-		const cs = window.getComputedStyle(<Element>borderElement);
+		const cs = window.getComputedStyle(borderElement as Element);
 
-		if(borderElement) {
+		if (borderElement) {
 			borderElement.style.borderBottomWidth = vborder + 'px';
 			borderElement.style.borderTopWidth = vborder + 'px';
 
@@ -284,8 +285,8 @@ export class ImageCropperComponent {
 	}
 
 	protected getComputedDimensions(element: HTMLElement) {
-		const cs = window.getComputedStyle(element)
-		return { width: parseInt(<string>cs.width, 10), height: parseInt(<string>cs.height, 10) };
+		const cs = window.getComputedStyle(element);
+		return { width: parseInt(cs.width as string, 10), height: parseInt(cs.height as string, 10) };
 	}
 }
 

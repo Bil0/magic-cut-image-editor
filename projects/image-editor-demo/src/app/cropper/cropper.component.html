@@ -1,5 +1,5 @@
 <div>
-    <image-cropper
+    <mc-image-cropper
         class="image-cropper"
         #cropper
         [src]="file"
@@ -8,8 +8,8 @@
         [zoom]="1"
         [left]="-200"
         [top]="-200"
-        (change)="updateImageConfig($event)"
-    ></image-cropper>
+        (congfigChange)="updateImageConfig($event)"
+    ></mc-image-cropper>
     <mat-slider
         value="1"
         min="1"

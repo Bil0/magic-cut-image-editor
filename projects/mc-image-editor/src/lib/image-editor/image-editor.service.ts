@@ -11,13 +11,15 @@ export class ImageEditorService {
 	features: { [feature: string]: ImageEditorFeature } = {};
 
 	constructor(availableFeatures: AvailableFeatures) {
-		for(let f in availableFeatures) {
-			this.registerFeature(availableFeatures[f]);
+		for (const f in availableFeatures) {
+			if (availableFeatures[f]) {
+				this.registerFeature(availableFeatures[f]);
+			}
 		}
 	}
 
 	private registerFeature(feature: ImageEditorFeature) {
-		if(this.features[feature.name] && this.features[feature.name] === feature) {
+		if (this.features[feature.name] && this.features[feature.name] === feature) {
 			throw new Error(`${feature.name} is already registered`);
 		}
 		this.features[feature.name] = feature;
