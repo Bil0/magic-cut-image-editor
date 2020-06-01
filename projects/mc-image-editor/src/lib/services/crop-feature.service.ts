@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { ImageEditorFeature } from '../../models/image-editor-feature.model';
+import { ImageEditorFeature } from '../models/image-editor-feature.model';
 
 
 @Injectable({

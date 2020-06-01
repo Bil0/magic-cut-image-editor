@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FileReaderComponent } from './file-reader/file-reader.component';
-import { ImageCropperComponent } from './image-cropper/image-cropper.component';
+import { FileReaderComponent } from './components/file-reader/file-reader.component';
+import { ImageCropperComponent } from './components/image-cropper/image-cropper.component';
 
 
 @NgModule({

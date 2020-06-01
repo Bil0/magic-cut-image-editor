@@ -10,8 +10,8 @@ import {
 } from '@angular/core';
 import * as _ from 'lodash';
 
-import { ImageEditorService } from '../image-editor/image-editor.service';
-import { EditableImageService } from '../image-editor/editable-image.service';
+import { ImageEditorService } from '../../services/image-editor.service';
+import { EditableImageService } from '../../services/editable-image.service';
 
 @Component({
 	selector: 'mc-image-cropper',

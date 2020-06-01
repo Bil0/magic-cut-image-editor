@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { FeatureContainer, ImageEditorFeature } from '../models/image-editor-feature.model';
-import { ImageCropperService } from './features/crop-feature.service';
+import { ImageCropperService } from './crop-feature.service';
 
 @Injectable({
     providedIn: 'root'

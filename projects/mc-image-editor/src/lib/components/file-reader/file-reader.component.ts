@@ -7,7 +7,7 @@ import {
 	ChangeDetectionStrategy
 } from '@angular/core';
 
-import { FileRepositoryService } from '../file-repository/file-repository.service';
+import { FileRepositoryService } from '../../services/file-repository/file-repository.service';
 
 @Component({
 	selector: 'mc-file-reader',

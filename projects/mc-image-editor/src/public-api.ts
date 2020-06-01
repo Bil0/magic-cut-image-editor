@@ -3,7 +3,7 @@
  */
 
 export * from './lib/image-editor.module';
-export * from './lib/file-repository/file-repository.service';
-export * from './lib/image-editor/image-editor.service';
-export * from './lib/file-reader/file-reader.component';
-export * from './lib/image-cropper/image-cropper.component';
+export * from './lib/services/file-repository/file-repository.service';
+export * from './lib/services/image-editor.service';
+export * from './lib/components/file-reader/file-reader.component';
+export * from './lib/components/image-cropper/image-cropper.component';

@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:lib:link": "ng build mc-image-editor --prod && npm link ./dist/mc-image-editor/",
+    "build:lib": "ng build mc-image-editor --prod",
     "build:demo": "ng build image-editor-demo --prod"
   },
   "private": true,
