@@ -1,6 +1,10 @@
-name: Build
+name: CI
 on:
   push:
+    branches:
+      - master
+
+  pull_request:
     branches:
       - master
 
@@ -27,8 +31,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: installa deps
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint:lib && npm run lint:demo
+
       - name: npm build lib and demo
         run: |
-          npm ci
           npm run build:lib
           npm run build:demo
