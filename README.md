@@ -1,5 +1,7 @@
 # Magic cut image editor
 
+[![build status](https://github.com/Bil0/magic-cut-image-editor/workflows/Build/badge.svg)](https://github.com/Bil0/magic-cut-image-editor/actions)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
 ## Development server
