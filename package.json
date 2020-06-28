@@ -1,6 +1,6 @@
 {
   "name": "magic-cut-image-editor",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "An image editor library for magic-cut app (http://www.magic-cut.in/)",
   "author": {
     "email": "b.lasledj@gmail.com",
@@ -22,7 +22,8 @@
     "build:lib": "ng build mc-image-editor --prod",
     "build:demo": "ng build image-editor-demo --prod",
     "format:check": "prettier --list-different projects/**/*.ts",
-    "format:write": "prettier --write projects/**/*.ts"
+    "format:write": "prettier --write projects/**/*.ts",
+    "release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -78,6 +79,7 @@
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "protractor": "~7.0.0",
+    "semantic-release": "^17.1.1",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
