@@ -1,6 +1,15 @@
 {
   "name": "mc-image-editor",
   "version": "0.0.1",
+  "description": "An image editor library for magic-cut app (http://www.magic-cut.in/)",
+  "author": {
+    "email": "b.lasledj@gmail.com",
+    "name": "Billel LASLEDJ"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bil0/magic-cut-image-editor"
+  },
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9"

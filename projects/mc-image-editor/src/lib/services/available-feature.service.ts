@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 
-import { FeatureContainer, ImageEditorFeature } from '../models/image-editor-feature.model';
+import {
+  FeatureContainer,
+  ImageEditorFeature,
+} from '../models/image-editor-feature.model';
 import { ImageCropperService } from './crop-feature.service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class AvailableFeatures implements FeatureContainer {
-	[props: string]: ImageEditorFeature;
+  [props: string]: ImageEditorFeature;
 
-	constructor(
-		public imageCropper: ImageCropperService
-	) {}
+  constructor(public imageCropper: ImageCropperService) {}
 }

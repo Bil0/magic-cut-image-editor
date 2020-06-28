@@ -1,17 +1,35 @@
 {
   "name": "magic-cut-image-editor",
   "version": "0.0.0",
+  "description": "An image editor library for magic-cut app (http://www.magic-cut.in/)",
+  "author": {
+    "email": "b.lasledj@gmail.com",
+    "name": "Billel LASLEDJ"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bil0/magic-cut-image-editor"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "lint:lib": "ng lint mc-image-editor --fix",
+    "lint:demo": "ng lint image-editor-demo --fix",
     "e2e": "ng e2e",
     "build:lib": "ng build mc-image-editor --prod",
-    "build:demo": "ng build image-editor-demo --prod"
+    "build:demo": "ng build image-editor-demo --prod",
+    "format:check": "prettier --list-different projects/**/*.ts",
+    "format:write": "prettier --write projects/**/*.ts"
   },
-  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "private": false,
   "dependencies": {
     "@angular/animations": "~9.1.9",
     "@angular/cdk": "^9.2.4",
@@ -38,6 +56,7 @@
     "@types/lodash": "^4.14.153",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "husky": "^4.2.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~5.0.0",
@@ -45,7 +64,10 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "lint-staged": "^10.2.7",
     "ng-packagr": "^9.0.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",

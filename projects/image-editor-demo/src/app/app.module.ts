@@ -10,10 +10,7 @@ import { AppComponent } from './app.component';
 import { CropperDemoComponent } from './cropper/cropper.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CropperDemoComponent,
-  ],
+  declarations: [AppComponent, CropperDemoComponent],
   imports: [
     BrowserModule,
     ImageEditorModule,
@@ -22,6 +19,6 @@ import { CropperDemoComponent } from './cropper/cropper.component';
     MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
