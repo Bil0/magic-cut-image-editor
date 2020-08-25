@@ -6,5 +6,6 @@
     "umdModuleIds": {
       "lodash": "_"
     }
-  }
+  },
+  "assets": ["../../CHANGELOG.md", "../../LICENCE"]
 }

@@ -1,6 +1,6 @@
 {
   "name": "magic-cut-image-editor",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "An image editor library for magic-cut app (http://www.magic-cut.in/)",
   "author": {
     "email": "b.lasledj@gmail.com",
@@ -10,6 +10,15 @@
     "type": "git",
     "url": "https://github.com/Bil0/magic-cut-image-editor"
   },
+  "keywords": [
+    "Typescript",
+    "Angular",
+    "Image",
+    "edit",
+    "crop",
+    "svg"
+  ],
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,7 +32,7 @@
     "build:demo": "ng build image-editor-demo --prod",
     "format:check": "prettier --list-different projects/**/*.ts",
     "format:write": "prettier --write projects/**/*.ts",
-    "release": "semantic-release"
+    "release": "standard-version"
   },
   "husky": {
     "hooks": {
@@ -36,7 +45,7 @@
       "@commitlint/config-conventional"
     ]
   },
-  "private": false,
+  "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.9",
     "@angular/cdk": "^9.2.4",
@@ -80,6 +89,7 @@
     "pretty-quick": "^2.0.1",
     "protractor": "~7.0.0",
     "semantic-release": "^17.1.1",
+    "standard-version": "^8.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
