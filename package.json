@@ -28,8 +28,9 @@
     "lint:lib": "ng lint mc-image-editor",
     "lint:demo": "ng lint image-editor-demo",
     "e2e": "ng e2e",
-    "build:lib": "ng build mc-image-editor --prod",
+    "build:lib": "ng build mc-image-editor --prod && npm run copyfiles",
     "build:demo": "ng build image-editor-demo --prod",
+    "copyfiles": "copyfiles ./CHANGELOG.md LICENSE ./dist/mc-image-editor/",
     "format:check": "prettier --list-different projects/**/*.ts",
     "format:write": "prettier --write projects/**/*.ts",
     "release": "standard-version"
@@ -45,6 +46,12 @@
       "@commitlint/config-conventional"
     ]
   },
+  "standard-version": {
+    "scripts": {
+      "postbump": "node scripts/postbump",
+      "postcommit": "node scripts/postcommit"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.9",
@@ -57,13 +64,13 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.7",
+    "@angular-devkit/build-angular": "^0.1000.7",
     "@angular-devkit/build-ng-packagr": "~0.901.7",
     "@angular/cli": "~9.1.7",
     "@angular/compiler-cli": "~9.1.9",
@@ -75,6 +82,7 @@
     "@types/lodash": "^4.14.153",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "copyfiles": "^2.3.0",
     "husky": "^4.2.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
