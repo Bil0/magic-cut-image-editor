@@ -36,9 +36,7 @@
               "projects/mc-image-editor/tsconfig.lib.json",
               "projects/mc-image-editor/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -63,10 +61,9 @@
               "projects/image-editor-demo/src/favicon.ico",
               "projects/image-editor-demo/src/assets"
             ],
-            "styles": [
-              "projects/image-editor-demo/src/styles.css"
-            ],
-            "scripts": []
+            "styles": ["projects/image-editor-demo/src/styles.css"],
+            "scripts": [],
+            "allowedCommonJsDependencies": ["lodash"]
           },
           "configurations": {
             "production": {
@@ -127,9 +124,7 @@
               "projects/image-editor-demo/src/favicon.ico",
               "projects/image-editor-demo/src/assets"
             ],
-            "styles": [
-              "projects/image-editor-demo/src/styles.css"
-            ],
+            "styles": ["projects/image-editor-demo/src/styles.css"],
             "scripts": []
           }
         },
@@ -141,9 +136,7 @@
               "projects/image-editor-demo/tsconfig.spec.json",
               "projects/image-editor-demo/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -159,6 +152,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "image-editor"
 }
