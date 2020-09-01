@@ -25,8 +25,6 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "lint:lib": "ng lint mc-image-editor",
-    "lint:demo": "ng lint image-editor-demo",
     "e2e": "ng e2e",
     "build:lib": "ng build mc-image-editor --prod && npm run copyfiles",
     "build:demo": "ng build image-editor-demo --prod",

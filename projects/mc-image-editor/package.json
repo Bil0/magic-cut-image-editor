@@ -1,6 +1,6 @@
 {
   "name": "mc-image-editor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An image editor library for magic-cut app (http://www.magic-cut.in/)",
   "author": {
     "email": "b.lasledj@gmail.com",
