@@ -20,11 +20,11 @@
     "url": "https://github.com/Bil0/magic-cut-image-editor"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.9",
-    "@angular/core": "^9.1.9",
-    "lodash": "^4.17.15"
+    "@angular/common": "^10.0.14",
+    "@angular/core": "^10.0.14",
+    "lodash": "^4.17.20"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^2.0.0"
   }
 }
